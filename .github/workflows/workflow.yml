@@ -1,12 +1,12 @@
 name: CI/CD Pipeline
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   Deploy:
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/master'
+    if: github.ref == 'refs/heads/main'
     steps:
      # Step 1
       - name: Install SSH key
