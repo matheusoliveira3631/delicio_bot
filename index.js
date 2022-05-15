@@ -8,9 +8,11 @@ client.on('ready', () => {
 
 client.on('messageCreate', (message) => {
     console.log(`Message: ${message}`)
-    if(message.content.toLowerCase().includes("acho"))
+    if(message.content.toLowerCase().includes("ach") && 
+      message.author.username != client.user.username &&
+      !message.content.toLocaleLowerCase().includes("achi"))
     {   
-        message.channel.send("Tá achando? Pega 1 alho lá")          
+        message.channel.send(`@${message.author.username}, Tá achando? Pega 1 alho lá`)          
     }
 });
 
