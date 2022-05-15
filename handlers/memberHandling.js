@@ -6,7 +6,7 @@ const memberHandler = {
     },
     Handlers:{
         add: async (client, member)=>{
-            const channel = await member.guild.channels.fetch('973759236356050957')
+            const channel = await member.guild.channels.fetch('975535776366469150')
             channel.send({
                 files: [{
                 attachment: 'file.jpg',
