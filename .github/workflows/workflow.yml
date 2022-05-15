@@ -25,4 +25,4 @@ jobs:
           username: ubuntu
           key: ${{ secrets.RSA }}
           port: 22
-          script: bot
+          script: sudo bot

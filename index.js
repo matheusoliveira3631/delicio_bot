@@ -2,35 +2,20 @@ const { Client, Intents } = require('discord.js');
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MEMBERS, Intents.FLAGS.GUILD_MESSAGES] });
 const config = require("./config")
 
+const messageHandler = require("./handlers/messageHandling")
+const memberHandler = require("./handlers/memberHandling")
+
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 });
 
-client.on('messageCreate', (message) => {
-    console.log(`Message: ${message}`)
-    if(message.content.toLowerCase().includes("ach") && 
-      message.author.username != client.user.username &&
-      !message.content.toLocaleLowerCase().includes("achi"))
-    {   
-        message.channel.send(`@${message.author.username}, Tá achando? Pega 1 alho lá`)          
-    }
+client.on('messageCreate', async (message) => {
+    await messageHandler.handleMessage(client, message)
 });
 
 
 client.on('guildMemberAdd', async member => {
-    const channel = await member.guild.channels.fetch('973759236356050957')
-    channel.send({
-        files: [{
-          attachment: 'file.jpg',
-          name: 'file.jpg',
-          description: 'A description of the file'
-        }]
-      })
-        .then(console.log("Image sent"))
-        .catch(console.error);
-        
-    await channel.send(`Fala ${member.displayName}, belê?`)
-
+    await memberHandler.handleMemberAction(client, member)
 });
 
 client.login(config.token);
