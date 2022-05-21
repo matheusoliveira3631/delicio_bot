@@ -13,7 +13,6 @@ client.on('messageCreate', async (message) => {
     await messageHandler.handleMessage(client, message)
 });
 
-
 client.on('guildMemberAdd', async member => {
     await memberHandler.handleMemberAction(client, member)
 });
