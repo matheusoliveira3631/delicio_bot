@@ -17,4 +17,4 @@ client.on('guildMemberAdd', async member => {
     await memberHandler.handleMemberAction(client, member)
 });
 
-client.login(config.token);
+client.login(config.DISCORD_TOKEN);

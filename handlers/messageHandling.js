@@ -1,4 +1,5 @@
 const troteGenerator = require("../commands/trote")
+const pegadinhaGenerator = require("../commands/video")
 
 const messageHandler = {
     handleMessage:async (client, message)=>{
@@ -36,6 +37,9 @@ const messageHandler = {
     Commands:{
         "!trote": async (client, message)=>{
             await troteGenerator(client, message)
+        },
+        "!pegadinha": async (client, message)=>{
+            await pegadinhaGenerator(client, message)
         }
     }
 }
